@@ -3,7 +3,7 @@
     "resources": [
         {
             "name": "Base de Datos de Mortalidad del Censo de Población y Vivienda",
-            "path": "mortalidad.csv",
+            "path": "mortalidad.parquet",
             "schema": {
                 "fields": [
                     {

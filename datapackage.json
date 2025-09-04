@@ -1,0 +1,30 @@
+{
+  "profile": "data-package-catalog",
+  "name": "censos-ine-bolivia",
+  "resources": [
+    {
+      "profile": "tabular-data-package",
+      "name": "Base de Datos de Emigración - Censo de Población y Vivienda Bolivia 2025",
+      "format": "csv",
+      "path": "CPV2024/Base de datos CSV/emigracion/datapackage.json"
+    },
+    {
+      "profile": "tabular-data-package",
+      "name": "Base de Datos de Mortalidad - Censo de Población y Vivienda Bolivia 2025",
+      "format": "csv",
+      "path": "CPV2024/Base de datos CSV/mortalidad/datapackage.json"
+    },
+    {
+      "profile": "data-package-catalog",
+      "name": "Base de Datos de Personas - Censo de Población y Vivienda Bolivia 2025",
+      "format": "csv",
+      "path": "CPV2024/Base de datos CSV/persona/datapackage.json"
+    },
+    {
+      "profile": "tabular-data-package",
+      "name": "Base de Datos de Viviendas - Censo de Población y Vivienda Bolivia 2025",
+      "format": "csv",
+      "path": "CPV2024/Base de datos CSV/vivienda/datapackage.json"
+    }
+  ]
+}

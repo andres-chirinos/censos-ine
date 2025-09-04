@@ -1,9 +1,9 @@
 {
-    "name": "emigracion",
+    "name": "vivienda",
     "resources": [
         {
-            "name": "Base de Datos de Emigracion del Censo de Población y Vivienda",
-            "path": "emigracion.parquet",
+            "name": "Base de Datos de Vivienda del Censo de Población y Vivienda",
+            "path": "municipio/MUN=*/part.*.parquet",
             "schema": {
                 "fields": [
                     {
@@ -970,8 +970,441 @@
                         }
                     },
                     {
-                        "name": "E203_SEXO",
-                        "title": "20.3. La persona es:",
+                        "name": "N_VIV",
+                        "title": "Número de vivienda",
+                        "type": "string"
+                    },
+                    {
+                        "name": "URBRUR",
+                        "title": "Área Urbana  - Rural",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Urbana",
+                            "2": "Rural"
+                        }
+                    },
+                    {
+                        "name": "V01_TIPOVIV",
+                        "title": "1. La vivienda es: (Tipo de vivienda)",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8",
+                                "9",
+                                "10",
+                                "11",
+                                "12",
+                                "13",
+                                "14",
+                                "15",
+                                "16"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Casa",
+                            "2": "Choza, pahuichi",
+                            "3": "Departamento",
+                            "4": "Cuarto(s) o habitación(es) suelta(s)",
+                            "5": "Vivienda improvisada o vivienda móvil",
+                            "6": "Establecimiento no destinado para vivienda",
+                            "7": "Hotel, hostal, residencial o alojamiento",
+                            "8": "Hospital o clínica con internación",
+                            "9": "Cuartel o establecimiento militar o policial",
+                            "10": "Residencia u otro de adultos mayores",
+                            "11": "Albergue de niñas(os) y adolescentes",
+                            "12": "Recinto penitenciario o de reintegración",
+                            "13": "Campamento de trabajo",
+                            "14": "Otra (Instituto de rehabilitación, convento)",
+                            "15": "Persona que vive en la calle",
+                            "16": "En tránsito: terminal, aeropuerto, puerto u otro"
+                        }
+                    },
+                    {
+                        "name": "V02_CONDOCUP",
+                        "title": "2. La vivienda esta: (Condición de ocupación de la vivienda)",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ]
+                        },
+                        "valueLabels": {
+                            "0": "Ocupada con personas presentes sin Jefe",
+                            "1": "Ocupada con personas presentes",
+                            "2": "Ocupada con personas temporalmente ausentes",
+                            "3": "Desocupada para alquilar y/o vender",
+                            "4": "Desocupada terminándose de construir o reparar",
+                            "5": "Desocupada abandonada"
+                        }
+                    },
+                    {
+                        "name": "V03_PARED",
+                        "title": "3. Cual es el material de construcción más utilizado en las paredes de esta vivienda",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Ladrillo, bloque de cemento, hormigón",
+                            "2": "Adobe, tapial",
+                            "3": "Tabique, quinche",
+                            "4": "Piedra",
+                            "5": "Madera",
+                            "6": "Caña, palma, tronco",
+                            "7": "Otro"
+                        }
+                    },
+                    {
+                        "name": "V04_REVOQ",
+                        "title": "4. Las paredes interiores de esta vivienda. Tienen revoque",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No"
+                        }
+                    },
+                    {
+                        "name": "V05_TECHO",
+                        "title": "5. Cuál es el material de construcción más utilizado en los techos de esta vivienda",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Calamina o plancha",
+                            "2": "Teja (de cemento, arcilla o fibrocemento)",
+                            "3": "Losa de hormigón armado",
+                            "4": "Paja, palma, caña, barro, jatata, motacú, chuchio",
+                            "5": "Otro"
+                        }
+                    },
+                    {
+                        "name": "V06_PISO",
+                        "title": "6. Cuál es el material más utilizado en los pisos de esta vivienda",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Tierra",
+                            "2": "Tablón de madera",
+                            "3": "Machimbre, parquet",
+                            "4": "Cerámica, porcelanato",
+                            "5": "Cemento",
+                            "6": "Mosaico, baldosa",
+                            "7": "Ladrillo",
+                            "8": "Piso Flotante",
+                            "9": "Otro"
+                        }
+                    },
+                    {
+                        "name": "V07_AGUAPRO",
+                        "title": "7. Principalmente, el agua que usan en la vivienda proviene de:",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Cañería de red",
+                            "2": "Pileta pública",
+                            "3": "Cosecha de agua de lluvia",
+                            "4": "Pozo excavado o perforado con bomba",
+                            "5": "Pozo no protegido o sin bomba",
+                            "6": "Manantial o vertiente protegida",
+                            "7": "Río, acequia o vertiente no protegida",
+                            "8": "Carro repartidor (aguatero)",
+                            "9": "Otro"
+                        }
+                    },
+                    {
+                        "name": "V08_AGUADIST",
+                        "title": "8. El agua que usan en la vivienda se distribuye:",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Por cañería dentro de la vivienda",
+                            "2": "Por cañería fuera de la vivienda, pero dentro del lote o terreno",
+                            "3": "No se distribuye por cañería"
+                        }
+                    },
+                    {
+                        "name": "V09_ENERGIA",
+                        "title": "9. De donde proviene la energía eléctrica que usan en la vivienda",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Servicio público de energía eléctrica",
+                            "2": "Motor propio (Generador)",
+                            "3": "Panel solar",
+                            "4": "Otro",
+                            "5": "No tiene"
+                        }
+                    },
+                    {
+                        "name": "V10_COMBUS",
+                        "title": "10. Cuál es el principal combustible o energía que utiliza para cocinar",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Gas en garrafa",
+                            "2": "Gas por cañería (a domicilio)",
+                            "3": "Leña",
+                            "4": "Guano, bosta o taquia",
+                            "5": "Electricidad",
+                            "6": "Energía solar (cocina solar)",
+                            "7": "Otro",
+                            "8": "No cocina"
+                        }
+                    },
+                    {
+                        "name": "V11_BASURA",
+                        "title": "11. Habitualmente. Qué hacen con la basura que generan",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "La depositan en el contenedor o basurero público",
+                            "2": "La entregan al carro basurero (servicio público)",
+                            "3": "La botan en un terreno baldío o la calle",
+                            "4": "La botan al río",
+                            "5": "La queman",
+                            "6": "La entierran",
+                            "7": "Otra forma"
+                        }
+                    },
+                    {
+                        "name": "V12_COCINA",
+                        "title": "12. Tienen un cuarto solo para cocinar",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No"
+                        }
+                    },
+                    {
+                        "name": "V13_HABITAC",
+                        "title": "13. Cuántos cuartos o habitaciones ocupan, sin contar baño y cocina",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Uno",
+                            "2": "Dos",
+                            "3": "Tres",
+                            "4": "Cuatro",
+                            "5": "Cinco",
+                            "6": "Seis",
+                            "7": "Siete",
+                            "8": "Ocho o más"
+                        }
+                    },
+                    {
+                        "name": "V14_DORMIT",
+                        "title": "14. De estos cuartos o habitaciones, Cuántos se utilizan solo para dormir",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "0",
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8"
+                            ]
+                        },
+                        "valueLabels": {
+                            "0": "Cero",
+                            "1": "Uno",
+                            "2": "Dos",
+                            "3": "Tres",
+                            "4": "Cuatro",
+                            "5": "Cinco",
+                            "6": "Seis",
+                            "7": "Siete",
+                            "8": "Ocho o más"
+                        }
+                    },
+                    {
+                        "name": "V15_SERVSAN",
+                        "title": "15. Tienen, baño o letrina",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí, usado solo por su hogar",
+                            "2": "Sí, compartido con otros hogares",
+                            "3": "No tiene"
+                        }
+                    },
+                    {
+                        "name": "V16_DESAGUE",
+                        "title": "16. El baño o letrina tiene desagüe:",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "A la red de alcantarillado",
+                            "2": "A una cámara séptica",
+                            "3": "A un pozo ciego",
+                            "4": "A un pozo de absorción",
+                            "5": "A la superficie (calle, quebrada o río)",
+                            "6": "Es baño ecológico"
+                        }
+                    },
+                    {
+                        "name": "V17_TENENCIA",
+                        "title": "17. La vivienda que ocupan es: (Tenencia de la vivienda)",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
+                                "4",
+                                "5",
+                                "6",
+                                "7",
+                                "8"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Propia y totalmente pagada",
+                            "2": "Propia y la están pagando",
+                            "3": "Prestada por parientes o amigos",
+                            "4": "Alquilada",
+                            "5": "En contrato anticrético",
+                            "6": "En contrato mixto (anticrético y alquiler)",
+                            "7": "Cedida por servicios",
+                            "8": "Otra"
+                        }
+                    },
+                    {
+                        "name": "V18A_BICI",
+                        "title": "18.1. Su hogar tiene: Bicicleta",
                         "type": "string",
                         "constraints": {
                             "enum": [
@@ -981,558 +1414,404 @@
                             ]
                         },
                         "valueLabels": {
-                            "1": "Mujer",
-                            "2": "Hombre",
-                            "9": "Sin Especificar"
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
                         }
                     },
                     {
-                        "name": "E204_ANSAL",
-                        "title": "20.4. En qué año salió del país",
+                        "name": "V18B_MOTO",
+                        "title": "18.2. Su hogar tiene: Motocicleta o cuadratrack",
                         "type": "string",
                         "constraints": {
                             "enum": [
-                                "9999"
+                                "1",
+                                "2",
+                                "9"
                             ]
                         },
                         "valueLabels": {
-                            "9999": "Sin especificar"
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
                         }
                     },
                     {
-                        "name": "E205_EDAD",
-                        "title": "20.5. A qué edad se fue",
+                        "name": "V18C_AUTO",
+                        "title": "18.3. Su hogar tiene: Vehículo automotor",
                         "type": "string",
                         "constraints": {
                             "enum": [
-                                "999"
+                                "1",
+                                "2",
+                                "9"
                             ]
                         },
                         "valueLabels": {
-                            "999": "Sin especificar"
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
                         }
                     },
                     {
-                        "name": "PAIS_DES",
-                        "title": "20.2. En que país vive actualmente",
+                        "name": "V18D_CARRETA",
+                        "title": "18.4. Su hogar tiene: Carreta o carretón",
                         "type": "string",
                         "constraints": {
                             "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V18E_BOTE",
+                        "title": "18.5. Su hogar tiene: Deslizador, balsa, canoa o bote",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V18F_REFRI",
+                        "title": "18.6. Su hogar tiene: Refrigerador o congeladora",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V18G_MICRO",
+                        "title": "18.7. Su hogar tiene: Microondas",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V18H_CALEFON",
+                        "title": "18.8. Su hogar tiene: Calefón, termotanque",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V18I_AIRE",
+                        "title": "18.9. Su hogar tiene: Aire acondicionado",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V18J_LAVADORA",
+                        "title": "18.10. Su hogar tiene: Lavadora de ropa",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V19A_RADIO",
+                        "title": "19.1. Su hogar tiene: Radio o equipo de sonido",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V19B_TV",
+                        "title": "19.2. Su hogar tiene: Televisor",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V19C_COMPU",
+                        "title": "19.3. Su hogar tiene: Computadora, laptop o tablet",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V19D_CELULAR",
+                        "title": "19.4. Su hogar tiene: Teléfono celular",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V19E_INETFIJO",
+                        "title": "19.5. Su hogar tiene: Internet fijo en la vivienda",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V19F_INETMOVIL",
+                        "title": "19.6. Su hogar tiene: Internet móvil (megas o datos)",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V19G_TVCABLE",
+                        "title": "19.7. Su hogar tiene: Servicio de TV cable o satelital",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V19H_TELFIJO",
+                        "title": "19.8. Su hogar tiene: Servicio de telefonía fija",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V20A_EMI",
+                        "title": "20.A. Alguna persona que vivía con usted(es) en este hogar, actualmente vive en otro país",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No"
+                        }
+                    },
+                    {
+                        "name": "V20B_TOTEMI",
+                        "title": "20.B. Cuantas personas",
+                        "type": "string"
+                    },
+                    {
+                        "name": "V21A_FAL",
+                        "title": "21.A. Desde 2019 a la fecha, murió alguna persona que vivía con usted(es) en este hogar",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No"
+                        }
+                    },
+                    {
+                        "name": "V21B_TOTFAL",
+                        "title": "21.B. Cuantas personas",
+                        "type": "string"
+                    },
+                    {
+                        "name": "TOT_PERS",
+                        "title": "Total personas",
+                        "type": "string"
+                    },
+                    {
+                        "name": "TIP_HOG",
+                        "title": "Tipología de hogar",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "3",
                                 "4",
-                                "8",
-                                "12",
-                                "16",
-                                "20",
-                                "24",
-                                "28",
-                                "31",
-                                "32",
-                                "36",
-                                "40",
-                                "44",
-                                "48",
-                                "50",
-                                "51",
-                                "52",
-                                "56",
-                                "60",
-                                "64",
-                                "68",
-                                "70",
-                                "72",
-                                "76",
-                                "84",
-                                "90",
-                                "92",
-                                "96",
-                                "100",
-                                "104",
-                                "108",
-                                "112",
-                                "116",
-                                "120",
-                                "124",
-                                "132",
-                                "136",
-                                "140",
-                                "144",
-                                "148",
-                                "152",
-                                "156",
-                                "158",
-                                "162",
-                                "166",
-                                "170",
-                                "174",
-                                "175",
-                                "178",
-                                "180",
-                                "184",
-                                "188",
-                                "191",
-                                "192",
-                                "196",
-                                "203",
-                                "204",
-                                "208",
-                                "212",
-                                "214",
-                                "218",
-                                "222",
-                                "226",
-                                "231",
-                                "232",
-                                "233",
-                                "234",
-                                "238",
-                                "239",
-                                "242",
-                                "246",
-                                "248",
-                                "250",
-                                "254",
-                                "258",
-                                "260",
-                                "262",
-                                "266",
-                                "268",
-                                "270",
-                                "275",
-                                "276",
-                                "288",
-                                "292",
-                                "296",
-                                "300",
-                                "304",
-                                "308",
-                                "312",
-                                "316",
-                                "320",
-                                "324",
-                                "328",
-                                "332",
-                                "336",
-                                "340",
-                                "344",
-                                "348",
-                                "352",
-                                "356",
-                                "360",
-                                "364",
-                                "368",
-                                "372",
-                                "376",
-                                "380",
-                                "384",
-                                "388",
-                                "392",
-                                "398",
-                                "400",
-                                "404",
-                                "408",
-                                "410",
-                                "414",
-                                "417",
-                                "418",
-                                "422",
-                                "426",
-                                "428",
-                                "430",
-                                "434",
-                                "438",
-                                "440",
-                                "442",
-                                "446",
-                                "450",
-                                "454",
-                                "458",
-                                "462",
-                                "466",
-                                "470",
-                                "474",
-                                "478",
-                                "480",
-                                "484",
-                                "492",
-                                "496",
-                                "498",
-                                "499",
-                                "500",
-                                "504",
-                                "508",
-                                "512",
-                                "516",
-                                "520",
-                                "524",
-                                "528",
-                                "531",
-                                "533",
-                                "534",
-                                "535",
-                                "540",
-                                "548",
-                                "554",
-                                "558",
-                                "562",
-                                "566",
-                                "570",
-                                "574",
-                                "578",
-                                "580",
-                                "583",
-                                "584",
-                                "585",
-                                "586",
-                                "591",
-                                "598",
-                                "600",
-                                "604",
-                                "608",
-                                "612",
-                                "616",
-                                "620",
-                                "624",
-                                "626",
-                                "630",
-                                "634",
-                                "638",
-                                "642",
-                                "643",
-                                "646",
-                                "652",
-                                "654",
-                                "659",
-                                "660",
-                                "662",
-                                "663",
-                                "666",
-                                "670",
-                                "674",
-                                "678",
-                                "682",
-                                "686",
-                                "688",
-                                "689",
-                                "690",
-                                "694",
-                                "702",
-                                "703",
-                                "704",
-                                "705",
-                                "706",
-                                "710",
-                                "716",
-                                "724",
-                                "728",
-                                "729",
-                                "732",
-                                "740",
-                                "744",
-                                "748",
-                                "752",
-                                "756",
-                                "760",
-                                "762",
-                                "764",
-                                "768",
-                                "772",
-                                "776",
-                                "780",
-                                "784",
-                                "788",
-                                "792",
-                                "795",
-                                "796",
-                                "798",
-                                "800",
-                                "804",
-                                "807",
-                                "818",
-                                "826",
-                                "831",
-                                "832",
-                                "833",
-                                "834",
-                                "840",
-                                "850",
-                                "854",
-                                "858",
-                                "860",
-                                "862",
-                                "876",
-                                "882",
-                                "887",
-                                "894",
-                                "987",
-                                "988",
-                                "991",
-                                "992",
-                                "993",
-                                "994",
-                                "995",
-                                "996",
-                                "997",
-                                "998",
-                                "999"
+                                "5",
+                                "6",
+                                "7",
+                                "8"
                             ]
                         },
                         "valueLabels": {
-                            "4": "Afganistán",
-                            "8": "Albania",
-                            "12": "Argelia",
-                            "16": "Samoa Americana",
-                            "20": "Andorra",
-                            "24": "Angola",
-                            "28": "Antigua y Barbuda",
-                            "31": "Azerbaiyán",
-                            "32": "Argentina",
-                            "36": "Australia",
-                            "40": "Austria",
-                            "44": "Bahamas",
-                            "48": "Bahrein",
-                            "50": "Bangladesh",
-                            "51": "Armenia",
-                            "52": "Barbados",
-                            "56": "Bélgica",
-                            "60": "Bermuda",
-                            "64": "Bhután",
-                            "68": "Bolivia (Estado Plurinacional de",
-                            "70": "Bosnia y Herzegovina",
-                            "72": "Botswana",
-                            "76": "Brasil",
-                            "84": "Belice",
-                            "90": "Islas Salomón",
-                            "92": "Islas Vírgenes Británicas",
-                            "96": "Brunei Darussalam",
-                            "100": "Bulgaria",
-                            "104": "Myanmar",
-                            "108": "Burundi",
-                            "112": "Belarús",
-                            "116": "Camboya",
-                            "120": "Camerún",
-                            "124": "Canadá",
-                            "132": "Cabo Verde",
-                            "136": "Islas Caimán",
-                            "140": "República Centroafricana",
-                            "144": "Sri Lanka",
-                            "148": "Chad",
-                            "152": "Chile",
-                            "156": "China",
-                            "158": "Taiwán (Provincia de China)",
-                            "162": "Isla Christmas",
-                            "166": "Islas Cocos (Keeling)",
-                            "170": "Colombia",
-                            "174": "Comoras",
-                            "175": "Mayotte",
-                            "178": "Congo",
-                            "180": "República Democrática del Congo",
-                            "184": "Islas Cook",
-                            "188": "Costa Rica",
-                            "191": "Croacia",
-                            "192": "Cuba",
-                            "196": "Chipre",
-                            "203": "República Checa",
-                            "204": "Benin",
-                            "208": "Dinamarca",
-                            "212": "Dominica",
-                            "214": "República Dominicana",
-                            "218": "Ecuador",
-                            "222": "El Salvador",
-                            "226": "Guinea Ecuatorial",
-                            "231": "Etiopía",
-                            "232": "Eritrea",
-                            "233": "Estonia",
-                            "234": "Islas Feroe",
-                            "238": "Islas Malvinas (Falkland)",
-                            "239": "Georgia del Sur y las Islas Sandwich del Sur",
-                            "242": "Fiji",
-                            "246": "Finlandia",
-                            "248": "Islas Åland",
-                            "250": "Francia",
-                            "254": "Guayana Francesa",
-                            "258": "Polinesia Francesa",
-                            "260": "Territorio de las Tierras Australes Francesas",
-                            "262": "Djibouti",
-                            "266": "Gabón",
-                            "268": "Georgia",
-                            "270": "Gambia",
-                            "275": "Estado de Palestina",
-                            "276": "Alemania",
-                            "288": "Ghana",
-                            "292": "Gibraltar",
-                            "296": "Kiribati",
-                            "300": "Grecia",
-                            "304": "Groenlandia",
-                            "308": "Granada",
-                            "312": "Guadalupe",
-                            "316": "Guam",
-                            "320": "Guatemala",
-                            "324": "Guinea",
-                            "328": "Guyana",
-                            "332": "Haití",
-                            "336": "Santa Sede",
-                            "340": "Honduras",
-                            "344": "China, región administrativa especial de Hong Kong",
-                            "348": "Hungría",
-                            "352": "Islandia",
-                            "356": "India",
-                            "360": "Indonesia",
-                            "364": "Irán (República Islámica del)",
-                            "368": "Iraq",
-                            "372": "Irlanda",
-                            "376": "Israel",
-                            "380": "Italia",
-                            "384": "Costa de Marfil",
-                            "388": "Jamaica",
-                            "392": "Japón",
-                            "398": "Kazajstán",
-                            "400": "Jordania",
-                            "404": "Kenya",
-                            "408": "República Popular Democrática de Corea",
-                            "410": "República de Corea",
-                            "414": "Kuwait",
-                            "417": "Kirguistán",
-                            "418": "República Democrática Popular Lao",
-                            "422": "Líbano",
-                            "426": "Lesotho",
-                            "428": "Letonia",
-                            "430": "Liberia",
-                            "434": "Libia",
-                            "438": "Liechtenstein",
-                            "440": "Lituania",
-                            "442": "Luxemburgo",
-                            "446": "China, región administrativa especial de Macao",
-                            "450": "Madagascar",
-                            "454": "Malawi",
-                            "458": "Malasia",
-                            "462": "Maldivas",
-                            "466": "Malí",
-                            "470": "Malta",
-                            "474": "Martinica",
-                            "478": "Mauritania",
-                            "480": "Mauricio",
-                            "484": "México",
-                            "492": "Mónaco",
-                            "496": "Mongolia",
-                            "498": "República de Moldova",
-                            "499": "Montenegro",
-                            "500": "Montserrat",
-                            "504": "Marruecos",
-                            "508": "Mozambique",
-                            "512": "Omán",
-                            "516": "Namibia",
-                            "520": "Nauru",
-                            "524": "Nepal",
-                            "528": "Países Bajos",
-                            "531": "Curazao",
-                            "533": "Aruba",
-                            "534": "San Martín (parte Holandesa)",
-                            "535": "Bonaire, San Eustaquio y Saba",
-                            "540": "Nueva Caledonia",
-                            "548": "Vanuatu",
-                            "554": "Nueva Zelandia",
-                            "558": "Nicaragua",
-                            "562": "Níger",
-                            "566": "Nigeria",
-                            "570": "Niue",
-                            "574": "Isla Norfolk",
-                            "578": "Noruega",
-                            "580": "Islas Marianas Septentrionales",
-                            "583": "Micronesia (Estados Federados de)",
-                            "584": "Islas Marshall",
-                            "585": "Palau",
-                            "586": "Pakistán",
-                            "591": "Panamá",
-                            "598": "Papua Nueva Guinea",
-                            "600": "Paraguay",
-                            "604": "Perú",
-                            "608": "Filipinas",
-                            "612": "Pitcairn",
-                            "616": "Polonia",
-                            "620": "Portugal",
-                            "624": "Guinea-Bissau",
-                            "626": "Timor-Leste",
-                            "630": "Puerto Rico",
-                            "634": "Qatar",
-                            "638": "Reunión",
-                            "642": "Rumania",
-                            "643": "Federación de Rusia",
-                            "646": "Rwanda",
-                            "652": "San Barthélemy",
-                            "654": "Santa Elena",
-                            "659": "Saint Kitts y Nevis",
-                            "660": "Anguila",
-                            "662": "Santa Lucía",
-                            "663": "San Martín (parte francesa)",
-                            "666": "San Pedro y Miquelón",
-                            "670": "San Vicente y las Granadinas",
-                            "674": "San Marino",
-                            "678": "Santo Tomé y Príncipe",
-                            "682": "Arabia Saudita",
-                            "686": "Senegal",
-                            "688": "Serbia",
-                            "689": "Kosovo",
-                            "690": "Seychelles",
-                            "694": "Sierra Leona",
-                            "702": "Singapur",
-                            "703": "Eslovaquia",
-                            "704": "Viet Nam",
-                            "705": "Eslovenia",
-                            "706": "Somalia",
-                            "710": "Sudáfrica",
-                            "716": "Zimbabwe",
-                            "724": "España",
-                            "728": "Sudán del Sur",
-                            "729": "Sudán",
-                            "732": "Sáhara Occidental",
-                            "740": "Suriname",
-                            "744": "Islas Svalbard y Jan Mayen",
-                            "748": "Eswatini",
-                            "752": "Suecia",
-                            "756": "Suiza",
-                            "760": "República Árabe Siria",
-                            "762": "Tayikistán",
-                            "764": "Tailandia",
-                            "768": "Togo",
-                            "772": "Tokelau",
-                            "776": "Tonga",
-                            "780": "Trinidad y Tobago",
-                            "784": "Emiratos Árabes Unidos",
-                            "788": "Túnez",
-                            "792": "Turquía",
-                            "795": "Turkmenistán",
-                            "796": "Islas Turcas y Caicos",
-                            "798": "Tuvalu",
-                            "800": "Uganda",
-                            "804": "Ucrania",
-                            "807": "Macedonia del Norte",
-                            "818": "Egipto",
-                            "826": "Reino Unido de Gran Bretaña e Irlanda del Norte",
-                            "831": "Guernsey",
-                            "832": "Jersey",
-                            "833": "Isla de Man",
-                            "834": "República Unida de Tanzanía",
-                            "840": "Estados Unidos de América",
-                            "850": "Islas Vírgenes de los Estados Unidos",
-                            "854": "Burkina Faso",
-                            "858": "Uruguay",
-                            "860": "Uzbekistán",
-                            "862": "Venezuela (República Bolivariana de)",
-                            "876": "Islas Wallis y Futuna",
-                            "882": "Samoa",
-                            "887": "Yemen",
-                            "894": "Zambia",
-                            "987": "Caracteres aleatorios o descripción ilegible",
-                            "988": "Otro municipio",
-                            "991": "África",
-                            "992": "América",
-                            "993": "Asia",
-                            "994": "Europa",
-                            "995": "Oceanía",
-                            "996": "Otro país extranjero",
-                            "997": "No corresponde a país",
-                            "998": "No sabe",
-                            "999": "Sin Especificar"
+                            "1": "Hogar unipersonal",
+                            "2": "Hogar de pareja nuclear",
+                            "3": "Hogar monoparental",
+                            "4": "Hogar nuclear completo",
+                            "5": "Hogar extendido",
+                            "6": "Hogar compuesto",
+                            "7": "Otro tipo de hogar",
+                            "8": "Hogar de menores sin jefe de hogar"
+                        }
+                    },
+                    {
+                        "name": "V19E_F",
+                        "title": "Internet fijo en la vivienda o internet móvil",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
+                        }
+                    },
+                    {
+                        "name": "V19H_D",
+                        "title": "Servicio de telefonía fija o teléfono celular",
+                        "type": "string",
+                        "constraints": {
+                            "enum": [
+                                "1",
+                                "2",
+                                "9"
+                            ]
+                        },
+                        "valueLabels": {
+                            "1": "Sí",
+                            "2": "No",
+                            "9": "Sin especificar"
                         }
                     }
                 ]

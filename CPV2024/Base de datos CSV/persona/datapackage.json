@@ -3,7 +3,6 @@
     "resources": [
         {
             "name": "Base de Datos de Personas del Censo de Población y Vivienda",
-            "path": "municipio/persona-municipio-*.csv",
             "schema": {
                 "fields": [
                     {

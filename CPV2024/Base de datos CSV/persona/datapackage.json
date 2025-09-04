@@ -3,7 +3,6 @@
     "resources": [
         {
             "name": "Base de Datos de Personas del Censo de Población y Vivienda",
-            "path": "municipio/MUN=*/part.*.parquet",
             "schema": {
                 "fields": [
                     {
